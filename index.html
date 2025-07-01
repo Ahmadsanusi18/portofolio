@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Signika+Negative&display=swap');
+        :root {
+            --primary: #205781;
+            --secondary: #4F959D;
+            --accent: #98D2C0;
+            --light: #F6F8D5;
+        }
+        
+        body {
+            font-family: 'Signika Negative', sans-serif !important; /* Apply globally */
+            line-height: 1.6;
+            color: #333;
+            background-color: white;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important; /* Override for titles and subtitles */
+        }
+        
+        .navbar {
+            background-color: var(--primary);
+            transition: all 0.3s ease;
+        }
+        
+        .hero {
+            background: white;
+            min-height: 90vh;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 25px rgba(0,0,0,0.2);
+        }
+        
+        .skill-bar {
+            background-color: var(--accent);
+        }
+        
+        .contact-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--accent) 100%);
+        }
+        
+        .timeline::before {
+            background-color: var(--secondary);
+        }
+        
+        .timeline-item::after {
+            border-color: var(--primary);
+        }
+        
+        @media (max-width: 768px) {
+            .hero {
+                min-height: 70vh;
+            }
+            
+            .timeline::before {
+                left: 31px;
+            }
+        }
+
+        /* 3D Profile Image Styles */
+        .profile-3d {
+            transform-style: preserve-3d;
+            animation: float 6s ease-in-out infinite;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3),
+                        0 15px 35px rgba(0,0,0,0.2);
+            transition: transform 0.5s ease;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotateX(5deg) rotateY(5deg);
+            }
+            50% {
+                transform: translateY(-15px) rotateX(-5deg) rotateY(-5deg);
+            }
+        }
+
+        .profile-3d:hover {
+            transform: rotateY(20deg) scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar fixed w-full z-50 py-4 px-6 shadow-lg">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="text-2xl font-bold text-white">
+                <span>PORT</span><span class="text-[var(--accent)]">FOLIO</span>
+            </div>
+            <div class="hidden md:flex space-x-8">
+                <a href="#home" class="text-white hover:text-[var(--accent)] transition duration-300">Home</a>
+                <a href="#about" class="text-white hover:text-[var(--accent)] transition duration-300">About</a>
+                <a href="#projects" class="text-white hover:text-[var(--accent)] transition duration-300">Projects</a>
+                <a href="#skills" class="text-white hover:text-[var(--accent)] transition duration-300">Skills</a>
+                <a href="#experience" class="text-white hover:text-[var(--accent)] transition duration-300">Experience</a>
+                <a href="#contact" class="text-white hover:text-[var(--accent)] transition duration-300">Contact</a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden text-white focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-[var(--primary)] w-full px-6 py-4 absolute left-0 top-full">
+            <div class="flex flex-col space-y-4">
+                <a href="#home" class="text-white hover:text-[var(--accent)] transition duration-300">Home</a>
+                <a href="#about" class="text-white hover:text-[var(--accent)] transition duration-300">About</a>
+                <a href="#projects" class="text-white hover:text-[var(--accent)] transition duration-300">Projects</a>
+                <a href="#skills" class="text-white hover:text-[var(--accent)] transition duration-300">Skills</a>
+                <a href="#experience" class="text-white hover:text-[var(--accent)] transition duration-300">Experience</a>
+                <a href="#contact" class="text-white hover:text-[var(--accent)] transition duration-300">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero flex items-center justify-center text-center text-[var(--primary)] pt-20">
+        <div class="max-w-7xl mx-auto px-6 py-24">
+            <div class="mx-auto mb-8 w-48 h-48 overflow-hidden">
+                <img src="img/mad.png" alt="Professional portrait of a software developer with confident expression wearing business casual attire in a modern office environment" class="w-full h-full object-cover" />
+            </div>
+            <h1 class="text-4xl md:text-6xl font-bold mb-4 animate-fadeInDown">Ahmad Sanusi</h1>
+            <h2 class="text-xl md:text-2xl mb-6 text-[var(--accent)] animate-fadeInDown delay-100">Web Designer</h2>
+            <p class="max-w-2xl mx-auto text-lg md:text-xl mb-8 animate-fadeInDown delay-200">I am an expert in the field of web design and have created several projects or applications</p>
+            <div class="flex flex-wrap justify-center gap-4 animate-fadeInDown delay-300">
+                <a href="#contact" class="bg-[var(--primary)] hover:bg-[#1a4a73] text-white font-bold py-3 px-6 rounded-lg transition duration-300">Hire Me</a>
+                <a href="#projects" class="border-2 border-[var(--primary)] hover:bg-[var(--primary)] hover:text-white font-bold py-3 px-6 rounded-lg transition duration-300">View Work</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center text-[var(--primary)]">Tentang Saya</h2>
+            <div class="flex flex-col md:flex-row gap-12 items-center">
+                <div class="md:w-1/2 rounded-lg overflow-hidden shadow-xl">
+                    <img src="img/mad2.png" alt="Developer working on laptop in a creative workspace with plants and notebooks" class="w-full h-full object-cover" />
+                </div>
+                <div class="md:w-1/2 flex flex-col gap-6">
+                    <h3 class="text-2xl font-bold text-[var(--secondary)]">Siapa ya saya??</h3>
+                    <p class="text-lg">Saya adalah pengembang aplikasi dan desainer web yang sangat mencintai keterampilan saya. Perjalanan saya dalam desain dimulai dengan rasa ingin tahu dan semangat, 
+                        dan hingga kini saya terus berusaha mengembangkan keterampilan saya.</p>
+                    <div class="grid grid-cols-2 gap-4 mt-4">
+                        <div>
+                            <h4 class="font-bold text-[var(--primary)]">Nama:</h4>
+                            <p>Ahmad Sanusi</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-[var(--primary)]">Email:</h4>
+                            <p>sanusiahmdad@gmail.com</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-[var(--primary)]">Nomor:</h4>
+                            <p>(+62) 858-7127-8874</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-[var(--primary)]">Pengalaman:</h4>
+                            <p>-</p>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <p class="text-lg mb-4">When I'm not coding, you can find me hiking, reading nonfiction, or experimenting with new cooking recipes.</p>
+                        <a href="#" class="inline-block bg-[var(--primary)] hover:bg-[#1a4a73] text-white font-bold py-3 px-6 rounded-lg transition duration-300">Download CV</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-[var(--light)]">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center text-[var(--primary)]">My Projects</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="project-card bg-white rounded-lg overflow-hidden shadow-lg transition duration-500">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/36aeabd7-282a-41b8-a552-f45c6239fcb9.png" alt="Dashboard interface for business analytics platform with charts and metrics" class="w-full h-full object-cover" />
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-3">
+                            <h3 class="text-xl font-bold text-[var(--primary)]">Analytics Dashboard</h3>
+                            <span class="bg-[var(--accent)] text-[var(--primary)] px-3 py-1 rounded-full text-sm font-medium">2023</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">A comprehensive business intelligence dashboard with real-time data visualization and reporting capabilities.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-gray-100 px-3 py-1 rounded-full text-sm">React</span>
+                            <span class="bg-gray-100 px-3 py-1 rounded-full text-sm">Node.js</span>
+                            <span class="bg-gray-100 px-3 py-1 rounded-full text-sm">MongoDB</span>
+                        </div>
+                        <a href="#" class="text-[var(--secondary)] hover:text-[var(--primary)] font-medium inline-flex items-center">
+                            View Project
+                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="project-card bg-white rounded-lg overflow-hidden shadow-lg transition duration-500">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/3a6fda2d-192b-4c5f-810f-96d968419808.png" alt="Mobile application screens showing travel booking interface with destinations and hotel options" class="w-full h-full object-cover" />
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-3">
+                            <h3 class="text-xl font-bold text-[var(--primary)]">Travel Companion App</h3>
+                            <span class="bg-[var(--accent)] text-[var(--primary)] px-3 py-1 rounded-full text-sm font-medium">2022</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">A mobile application that helps travelers find and book local experiences with integrated payment system.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-gray-100 px-3 py-1 rounded-full text-sm">Flutter</span>
+                            <span class="bg-gray-100 px-3 py-1 rounded-full text-sm">Firebase</span>
+                            <span class="bg-gray-100 px-3 py-1 rounded-full text-sm">Dart</span>
+                        </div>
+                        <a href="#" class="text-[var(--secondary)] hover:text-[var(--primary)] font-medium inline-flex items-center">
+                            View Project
+                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="project-card bg-white rounded-lg overflow-hidden shadow-lg transition duration-500">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/c975a5d2-afb0-4db4-8322-4f8d3d3dfcfb.png" alt="E-commerce platform interface showcasing products with shopping cart functionality" class="w-full h-full object-cover" />
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-3">
+                            <h3 class="text-xl font-bold text-[var(--primary)]">E-Commerce Platform</h3>
+                            <span class="bg-[var(--accent)] text-[var(--primary)] px-3 py-1 rounded-full text-sm font-medium">2021</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">A full-featured online store with product management, cart functionality, and secure checkout process.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-gray-100 px-3 py-1 rounded-full text-sm">Vue.js</span>
+                            <span class="bg-gray-100 px-3 py-1 rounded-full text-sm">Laravel</span>
+                            <span class="bg-gray-100 px-3 py-1 rounded-full text-sm">MySQL</span>
+                        </div>
+                        <a href="#" class="text-[var(--secondary)] hover:text-[var(--primary)] font-medium inline-flex items-center">
+                            View Project
+                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#" class="inline-block border-2 border-[var(--primary)] text-[var(--primary)] hover:bg-[var(--primary)] hover:text-white font-bold py-3 px-8 rounded-lg transition duration-300">
+                    View All Projects
+                </a>
+            </div>
+        </div>
+    </section>
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center text-[var(--primary)]">My Skills</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
+                <div>
+                    <h3 class="text-2xl font-bold mb-6 text-[var(--secondary)]">Technical Skills</h3>
+                    <div class="space-y-6">
+                        <!-- Skill 1 -->
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium text-gray-800">JavaScript/TypeScript</span>
+                                <span class="text-gray-600">95%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                <div class="skill-bar h-2.5 rounded-full" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Skill 2 -->
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium text-gray-800">React/Vue/Angular</span>
+                                <span class="text-gray-600">90%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                <div class="skill-bar h-2.5 rounded-full" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Skill 3 -->
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium text-gray-800">Node.js/Python</span>
+                                <span class="text-gray-600">85%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                <div class="skill-bar h-2.5 rounded-full" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Skill 4 -->
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium text-gray-800">Database Systems</span>
+                                <span class="text-gray-600">80%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                <div class="skill-bar h-2.5 rounded-full" style="width: 80%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-2xl font-bold mb-6 text-[var(--secondary)]">Professional Skills</h3>
+                    <div class="space-y-6">
+                        <!-- Skill 1 -->
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium text-gray-800">Problem Solving</span>
+                                <span class="text-gray-600">95%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                <div class="skill-bar h-2.5 rounded-full" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Skill 2 -->
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium text-gray-800">Communication</span>
+                                <span class="text-gray-600">85%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                <div class="skill-bar h-2.5 rounded-full" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Skill 3 -->
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium text-gray-800">Team Leadership</span>
+                                <span class="text-gray-600">80%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                <div class="skill-bar h-2.5 rounded-full" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Skill 4 -->
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium text-gray-800">Project Management</span>
+                                <span class="text-gray-600">75%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                <div class="skill-bar h-2.5 rounded-full" style="width: 75%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-[var(--light)] p-8 rounded-lg">
+                <h3 class="text-2xl font-bold mb-6 text-[var(--primary)]">Tools & Technologies</h3>
+                <div class="flex flex-wrap gap-4">
+                    <span class="bg-white px-4 py-2 rounded-lg shadow-md flex items-center gap-2">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/9fb0ac2b-464c-4472-9732-24c3bc5d4b48.png" alt="React logo icon" class="w-6 h-6" />
+                        React
+                    </span>
+                    <span class="bg-white px-4 py-2 rounded-lg shadow-md flex items-center gap-2">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/8b2c10cd-ded3-4395-8a05-69cfbfbe6fd8.png" alt="Vue logo icon" class="w-6 h-6" />
+                        Vue
+                    </span>
+                    <span class="bg-white px-4 py-2 rounded-lg shadow-md flex items-center gap-2">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/7c7cc11f-a31f-4dc7-af9e-f74d335434cc.png" alt="Node.js logo icon" class="w-6 h-6" />
+                        Node.js
+                    </span>
+                    <span class="bg-white px-4 py-2 rounded-lg shadow-md flex items-center gap-2">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/7a15b945-542a-4faf-9201-6c61d205d179.png" alt="Python logo icon" class="w-6 h-6" />
+                        Python
+                    </span>
+                    <span class="bg-white px-4 py-2 rounded-lg shadow-md flex items-center gap-2">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/8af9cd81-2f37-4cef-bded-cfea068c5657.png" alt="Docker logo icon" class="w-6 h-6" />
+                        Docker
+                    </span>
+                    <span class="bg-white px-4 py-2 rounded-lg shadow-md flex items-center gap-2">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/1d366957-4e17-4fd8-9938-f5893dbaa35d.png" alt="Git logo icon" class="w-6 h-6" />
+                        Git
+                    </span>
+                    <span class="bg-white px-4 py-2 rounded-lg shadow-md flex items-center gap-2">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/2db05b82-0191-4d64-b792-341a05edd4b6.png" alt="AWS logo icon" class="w-6 h-6" />
+                        AWS
+                    </span>
+                    <span class="bg-white px-4 py-2 rounded-lg shadow-md flex items-center gap-2">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/33a8b8bc-335c-4192-b984-88d8bcee07ca.png" alt="MongoDB logo icon" class="w-6 h-6" />
+                        MongoDB
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 bg-[var(--light)]">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center text-[var(--primary)]">Work Experience</h2>
+            
+            <div class="timeline relative max-w-3xl mx-auto pl-8 md:pl-0">
+                <div class="timeline-item relative pb-8 pl-8 md:pl-24">
+                    <div class="timeline-dot absolute w-4 h-4 rounded-full bg-[var(--secondary)] left-0 md:left-6 top-1 border-4 border-white"></div>
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <div class="flex flex-col md:flex-row justify-between mb-2">
+                            <h3 class="text-xl font-bold text-[var(--primary)]">Senior Full Stack Developer</h3>
+                            <span class="bg-[var(--accent)] text-[var(--primary)] px-3 py-1 rounded-full text-sm font-medium">2021 - Present</span>
+                        </div>
+                        <h4 class="text-lg text-[var(--secondary)] mb-3">Tech Innovations Inc.</h4>
+                        <p class="text-gray-600">Leading a team of developers to build scalable web applications. Architecting solutions and mentoring junior developers while implementing best practices in code quality and CI/CD pipelines.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item relative pb-8 pl-8 md:pl-24">
+                    <div class="timeline-dot absolute w-4 h-4 rounded-full bg-[var(--secondary)] left-0 md:left-6 top-1 border-4 border-white"></div>
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <div class="flex flex-col md:flex-row justify-between mb-2">
+                            <h3 class="text-xl font-bold text-[var(--primary)]">Full Stack Developer</h3>
+                            <span class="bg-[var(--accent)] text-[var(--primary)] px-3 py-1 rounded-full text-sm font-medium">2018 - 2021</span>
+                        </div>
+                        <h4 class="text-lg text-[var(--secondary)] mb-3">Digital Solutions Co.</h4>
+                        <p class="text-gray-600">Developed and maintained several client-facing web applications. Collaborated with cross-functional teams including designers, product managers, and other engineers.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item relative pb-8 pl-8 md:pl-24">
+                    <div class="timeline-dot absolute w-4 h-4 rounded-full bg-[var(--secondary)] left-0 md:left-6 top-1 border-4 border-white"></div>
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <div class="flex flex-col md:flex-row justify-between mb-2">
+                            <h3 class="text-xl font-bold text-[var(--primary)]">Frontend Developer</h3>
+                            <span class="bg-[var(--accent)] text-[var(--primary)] px-3 py-1 rounded-full text-sm font-medium">2016 - 2018</span>
+                        </div>
+                        <h4 class="text-lg text-[var(--secondary)] mb-3">Creative Web Agency</h4>
+                        <p class="text-gray-600">Implemented responsive web designs and optimized frontend performance. Worked closely with UX designers to create seamless user experiences across multiple projects.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section py-20 text-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">Get In Touch</h2>
+            
+            <div class="flex flex-col md:flex-row gap-12">
+                <div class="md:w-1/2">
+                    <h3 class="text-2xl font-bold mb-6">Contact Information</h3>
+                    <p class="mb-8">Feel free to reach out to me for project collaborations, job opportunities, or just to say hello. I'll get back to you as soon as possible.</p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4">
+                            <div class="bg-[var(--primary)] p-3 rounded-full">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Email</h4>
+                                <p class="text-[var(--light)]">john@example.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start gap-4">
+                            <div class="bg-[var(--primary)] p-3 rounded-full">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Phone</h4>
+                                <p class="text-[var(--light)]">+1 234 567 890</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start gap-4">
+                            <div class="bg-[var(--primary)] p-3 rounded-full">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Location</h4>
+                                <p class="text-[var(--light)]">San Francisco, California</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-12">
+                        <h4 class="text-xl font-bold mb-6">Connect With Me</h4>
+                        <div class="flex gap-4">
+                            <a href="#" class="bg-white text-[var(--primary)] hover:bg-[var(--light)] hover:text-white p-3 rounded-full transition duration-300">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z"></path>
+                                </svg>
+                            </a>
+                            <a href="#" class="bg-white text-[var(--primary)] hover:bg-[var(--light)] hover:text-white p-3 rounded-full transition duration-300">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M22.675 0H1.325C.593 0 0 .593 0 1.325v21.351C0 23.407.593 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.73 0 1.323-.593 1.323-1.325V1.325C24 .593 23.407 0 22.675 0z"></path>
+                                </svg>
+                            </a>
+                            <a href="#" class="bg-white text-[var(--primary)] hover:bg-[var(--light)] hover:text-white p-3 rounded-full transition duration-300">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M21.344 6.004a6.44 6.44 0 00-.917-.194c-.33-.06-.71-.12-1.194-.12-.485 0-.865.06-1.194.12-.33.066-.66.155-.917.194-.485.134-.71.202-.71.202s.132.069-.33-.404a1.638 1.638 0 00-.462-.462c-.474-.463-.403-.33-.403-.33s.067-.225.2-.71c.038-.257.127-.587.193-.917.06-.33.12-.71.12-1.194 0-.485-.06-.865-.12-1.194a6.117 6.117 0 00-.193-.917 1.91 1.91 0 00-.724-.857C16.82 0 16.55 0 15.595 0H8.405C7.45 0 7.18 0 6.807.111c-.331.125-.595.35-.857.723-.33.474-.404.403-.404.403s-.225-.067-.71-.2c-.257-.038-.587-.128-.917-.194-.33-.06-.71-.12-1.194-.12-.485 0-.865.06-1.194.12-.33.066-.66.155-.917.194-.484.134-.71.202-.71.202S.068 1.656.538 2.13c.258.257.35.521.475.852.111.373.111.643.111 1.597v7.19c0 .955 0 1.225.111 1.597.125.332.35.596.723.857.373.331.526.331 1.48.331h7.19c.955 0 1.225 0 1.597-.111.332-.125.596-.35.857-.723.331-.373.331-.526.331-1.48V8.405c0-.955 0-1.225-.111-1.597-.125-.332-.35-.596-.723-.857-.373-.331-.526-.331-1.48-.331h-5.39v4.034h3.088v7.869H21.44V6.205s-.225-.068-.71-.201zm-15.43 8.08c0 .076-.025.151-.075.201-.05.05-.126.075-.201.075h-1.27c-.152 0-.302-.06-.402-.16-.1-.1-.16-.25-.16-.402v-9.68c0-.152.06-.302.16-.402.1-.1.25-.16.402-.16h1.27c.075 0 .151.025.201.075.05.05.075.126.075.201v9.68zm4.495 0c0 .076-.025.151-.075.201-.05.05-.126.075-.201.075H6.836c-.075 0-.151-.025-.201-.075-.05-.05-.075-.126-.075-.201v-5.39c0-.075.025-.151.075-.201.05-.05.126-.075.201-.075h1.27c.075 0 .151.025.201.075.05.05.075.126.075.201v5.39zm4.5 0c0 .076-.025.151-.075.201-.05.05-.126.075-.201.075h-1.27c-.075 0-.151-.025-.201-.075-.05-.05-.075-.126-.075-.201V6.204c0-.075.025-.151.075-.201.05-.05.126-.075.201-.075h1.27c.075 0 .151.025.201.075.05.05.075.126.075.201v7.87zm4.495-.006c0 .076-.025.151-.075.201-.05.05-.126.075-.201.075h-1.27c-.075 0-.151-.025-.201-.075-.05-.05-.075-.126-.075-.201V8.405c0-.075.025-.151.075-.201.05-.05.126-.075.201-.075h1.27c.075 0 .151.025.201.075.05.05.075.126.075.201v5.673z"></path>
+                                </svg>
+                            </a>
+                            <a href="#" class="bg-white text-[var(--primary)] hover:bg-[var(--light)] hover:text-white p-3 rounded-full transition duration-300">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path>
+                                </svg>
+                            </a>
+                            <a href="#" class="bg-white text-[var(--primary)] hover:bg-[var(--light)] hover:text-white p-3 rounded-full transition duration-300">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2">
+                    <form id="contact-form" class="bg-white p-8 rounded-lg shadow-lg text-gray-800">
+                        <div class="mb-6">
+                            <label for="name" class="block mb-2 font-medium">Your Name</label>
+                            <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--secondary)]" required>
+                        </div>
+                        <div class="mb-6">
+                            <label for="email" class="block mb-2 font-medium">Your Email</label>
+                            <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--secondary)]" required>
+                        </div>
+                        <div class="mb-6">
+                            <label for="subject" class="block mb-2 font-medium">Subject</label>
+                            <input type="text" id="subject" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--secondary)]" required>
+                        </div>
+                        <div class="mb-6">
+                            <label for="message" class="block mb-2 font-medium">Message</label>
+                            <textarea id="message" rows="5" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--secondary)]" required></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-[var(--primary)] hover:bg-[#1a4a73] text-white font-bold py-3 px-6 rounded-lg transition duration-300">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[var(--primary)] text-white py-8">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center py-4">
+                <p>© 2023 John Doe. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="hidden fixed bottom-8 right-8 bg-[var(--secondary)] text-white p-3 rounded-full shadow-lg hover:bg-[var(--primary)] transition duration-300">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+        </svg>
+    </button>
+
+    <script>
+        // Mobile Menu Toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                const headerHeight = document.querySelector('nav').offsetHeight;
+                const targetPosition = target.offsetTop - headerHeight;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+                
+                // Close mobile menu if open
+                const mobileMenu = document.getElementById('mobile-menu');
+                if (!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+        
+        // Back to top button
+        window.addEventListener('scroll', function() {
+            const backToTopButton = document.getElementById('back-to-top');
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.remove('hidden');
+            } else {
+                backToTopButton.classList.add('hidden');
+            }
+        });
+        
+        document.getElementById('back-to-top').addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Form submission
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            // Here you would typically send the form data to a server
+            alert(`Thank you ${name}! Your message has been sent. I'll get back to you soon.`);
+            this.reset();
+        });
+    </script>
+</body>
+</html>
